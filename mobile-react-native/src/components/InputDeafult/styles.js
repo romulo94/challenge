@@ -20,7 +20,6 @@ export const Input = styled.TextInput.attrs({
   line-height: 12px;
   flex: 1;
 
-  margin-left: 15px;
   color: #333;
   font-size: 13px;
   background-color: transparent;

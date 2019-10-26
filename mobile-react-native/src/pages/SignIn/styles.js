@@ -9,6 +9,8 @@ export const Container = styled.KeyboardAvoidingView.attrs({
   enabled: Platform.OS === 'ios',
   behavior: 'padding',
 })`
+  display: flex;
+  width: 100%;
   flex: 1;
   justify-content: center;
   align-items: center;
@@ -16,5 +18,28 @@ export const Container = styled.KeyboardAvoidingView.attrs({
 `;
 
 export const FormInput = styled(Input)`
-  margin-bottom: 10px;
+  margin-bottom: 25px;
+`;
+
+export const FormButton = styled(Button)`
+  margin-bottom: 25px;
+`;
+
+export const Email = styled.Text`
+  margin-bottom: 25px;
+`;
+
+export const ContainerImage = styled.View`
+  height: 50%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;
+
+export const ContainerAction = styled.View`
+  height: 50%;
+  width: 100%;
+  /* justify-content: center; */
+  align-items: center;
+  top: 25px;
 `;

@@ -2,9 +2,11 @@ import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { Image } from 'react-native';
-import Button from '~/components/ButtonDefault';
+
 import { setEmail as setEmailAction } from '~/store/modules/auth/actions';
-import { Container, FormInput } from './styles';
+import {
+  Container, FormInput, ContainerImage, ContainerAction, FormButton,
+} from './styles';
 
 import logo from '~/assets/images/logo.png';
 
@@ -24,20 +26,24 @@ export default function Email({ navigation }) {
 
   return (
     <Container>
-      <Image source={logo} />
-      <FormInput
-        keyboardType="email-address"
-        autoCorrect={false}
-        autoCapitalize="none"
-        placeholder="Your Github email address"
-        returnKeyType="next"
-        value={email}
-        onChangeText={setEmail}
-      />
+      <ContainerImage>
+        <Image source={logo} />
+      </ContainerImage>
+      <ContainerAction>
+        <FormInput
+          keyboardType="email-address"
+          autoCorrect={false}
+          autoCapitalize="none"
+          placeholder="Your Github email address"
+          returnKeyType="next"
+          value={email}
+          onChangeText={setEmail}
+        />
 
-      <Button loading={false} onPress={next}>
-        Next
-      </Button>
+        <FormButton loading={false} onPress={next}>
+          Next
+        </FormButton>
+      </ContainerAction>
     </Container>
   );
 }

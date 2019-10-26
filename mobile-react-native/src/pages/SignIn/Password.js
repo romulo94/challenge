@@ -3,7 +3,9 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Text, Image } from 'react-native';
 import Button from '~/components/ButtonDefault';
-import { Container, FormInput } from './styles';
+import {
+  Container, FormInput, ContainerImage, ContainerAction, FormButton, Email,
+} from './styles';
 
 import logo from '~/assets/images/logo.png';
 
@@ -16,23 +18,27 @@ export default function Password({ navigation }) {
   }
   return (
     <Container>
-      <Image source={logo} />
-      <Text>{email}</Text>
-      <FormInput
-        autoCorrect={false}
-        autoCapitalize="none"
-        placeholder="Password"
-        returnKeyType="next"
-        value={password}
-        onChangeText={setPassword}
-      />
+      <ContainerImage>
+        <Image source={logo} />
+      </ContainerImage>
+      <ContainerAction>
+        <Email>{email}</Email>
+        <FormInput
+          autoCorrect={false}
+          autoCapitalize="none"
+          placeholder="Password"
+          returnKeyType="next"
+          value={password}
+          onChangeText={setPassword}
+        />
 
-      <Button loading={false} onPress={next}>
-        Login
-      </Button>
-      <Button loading={false} onPress={() => navigation.navigate('Login1')}>
-        Back
-      </Button>
+        <FormButton loading={false} onPress={next}>
+          Login
+        </FormButton>
+        <FormButton loading={false} onPress={() => navigation.navigate('Login1')}>
+          Back
+        </FormButton>
+      </ContainerAction>
     </Container>
   );
 }
