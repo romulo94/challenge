@@ -16,11 +16,13 @@ export const Input = styled.TextInput.attrs({
   placeholderTextColor: '#333',
   selectionColor: '#33333380',
 })`
-  height: 36px;
+  height: 100%;
+  line-height: 12px;
   flex: 1;
-  font-size: 15px;
+
   margin-left: 15px;
   color: #333;
-  font-size: 15px;
+  font-size: 13px;
   background-color: transparent;
+  text-align: center;
 `;
