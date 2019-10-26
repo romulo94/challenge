@@ -7,15 +7,21 @@
  */
 
 import React from 'react';
+import { Provider } from 'react-redux';
 import { SafeAreaView, Text, StatusBar } from 'react-native';
 
-const App = () => (
-  <>
-    <StatusBar barStyle="dark-content" />
-    <SafeAreaView>
-      <Text>Hello CREDITAS</Text>
-    </SafeAreaView>
-  </>
-);
+import './config/ReactotronConfig';
 
-export default App;
+import store from '~/store';
+
+export default function Main() {
+  return (
+    <Provider store={store}>
+      <StatusBar backgroundColor="#24292e" />
+
+      <SafeAreaView>
+        <Text>Hello CREDITAS</Text>
+      </SafeAreaView>
+    </Provider>
+  );
+}
