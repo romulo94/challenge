@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Text, Image } from 'react-native';
+import { signInRequest } from '~/store/modules/auth/actions';
 import Button from '~/components/ButtonDefault';
 import {
   Container, FormInput, ContainerImage, ContainerAction, FormButton, Email,
@@ -11,10 +12,11 @@ import logo from '~/assets/images/logo.png';
 
 export default function Password({ navigation }) {
   const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
   const email = useSelector((state) => state.auth.email);
 
-  function next() {
-    navigation.navigate('Login2');
+  function login() {
+    dispatch(signInRequest(password));
   }
   return (
     <Container>
@@ -32,7 +34,7 @@ export default function Password({ navigation }) {
           onChangeText={setPassword}
         />
 
-        <FormButton loading={false} onPress={next}>
+        <FormButton loading={false} onPress={login}>
           Login
         </FormButton>
         <FormButton loading={false} onPress={() => navigation.navigate('Login1')}>

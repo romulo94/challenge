@@ -13,7 +13,7 @@ export function setEmail(email) {
   };
 }
 
-export function signInRequest(email, password) {
+export function signInRequest(password) {
   return {
     type: Types.SIGN_IN_REQUEST,
     payload: { password },
