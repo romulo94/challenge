@@ -20,7 +20,23 @@ export default function Main() {
       <StatusBar backgroundColor="#24292e" />
 
       <SafeAreaView>
-        <Text>Hello CREDITAS</Text>
+        <Text
+          style={{
+            color: 'red',
+            fontSize: 20,
+          }}
+        >
+          Hello CREDITAS
+        </Text>
+        <Text
+          style={{
+            color: 'red',
+            fontFamily: 'Fira Code',
+            fontSize: 20,
+          }}
+        >
+          Hello CREDITAS
+        </Text>
       </SafeAreaView>
     </Provider>
   );
