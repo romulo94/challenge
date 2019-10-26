@@ -13,31 +13,13 @@ import { SafeAreaView, Text, StatusBar } from 'react-native';
 import './config/ReactotronConfig';
 
 import store from '~/store';
+import App from './App';
 
 export default function Main() {
   return (
     <Provider store={store}>
       <StatusBar backgroundColor="#24292e" />
-
-      <SafeAreaView>
-        <Text
-          style={{
-            color: 'red',
-            fontSize: 20,
-          }}
-        >
-          Hello CREDITAS
-        </Text>
-        <Text
-          style={{
-            color: 'red',
-            fontFamily: 'Fira Code',
-            fontSize: 20,
-          }}
-        >
-          Hello CREDITAS
-        </Text>
-      </SafeAreaView>
+      <App />
     </Provider>
   );
 }
