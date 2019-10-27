@@ -12,7 +12,7 @@ import {
   FormButton,
 } from './styles';
 
-import logo from '~/assets/images/logo.png';
+import logo from '~/assets/images/github-logo@128.png';
 
 export default function Email({ navigation }) {
   const emailStore = useSelector((state) => state.auth.email);

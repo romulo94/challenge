@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
-import {useSelector, useDispatch} from 'react-redux';
-import {Text, Image} from 'react-native';
-import {signInRequest} from '~/store/modules/auth/actions';
+import { useSelector, useDispatch } from 'react-redux';
+import { Text, Image } from 'react-native';
+import { signInRequest } from '~/store/modules/auth/actions';
 import Button from '~/components/ButtonDefault';
 import {
   Container,
@@ -13,12 +13,12 @@ import {
   Email,
 } from './styles';
 
-import logo from '~/assets/images/logo.png';
+import logo from '~/assets/images/github-logo@128.png';
 
-export default function Password({navigation}) {
+export default function Password({ navigation }) {
   const [password, setPassword] = useState('');
   const dispatch = useDispatch();
-  const {email, loading} = useSelector(state => state.auth);
+  const { email, loading } = useSelector((state) => state.auth);
 
   function login() {
     dispatch(signInRequest(password));
