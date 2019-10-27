@@ -1,17 +1,21 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
-import { useDispatch, useSelector } from 'react-redux';
-import { Image } from 'react-native';
+import {useDispatch, useSelector} from 'react-redux';
+import {Image} from 'react-native';
 
-import { setEmail as setEmailAction } from '~/store/modules/auth/actions';
+import {setEmail as setEmailAction} from '~/store/modules/auth/actions';
 import {
-  Container, FormInput, ContainerImage, ContainerAction, FormButton,
+  Container,
+  FormInput,
+  ContainerImage,
+  ContainerAction,
+  FormButton,
 } from './styles';
 
 import logo from '~/assets/images/logo.png';
 
-export default function Email({ navigation }) {
-  const emailStore = useSelector((state) => state.auth.email);
+export default function Email({navigation}) {
+  const emailStore = useSelector(state => state.auth.email);
   const [email, setEmail] = useState(emailStore || '');
   const dispatch = useDispatch();
 

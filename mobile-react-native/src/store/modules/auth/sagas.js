@@ -1,30 +1,29 @@
-import { Alert } from 'react-native';
-import {
-  all, call, put, takeLatest, select,
-} from 'redux-saga/effects';
-import { Types, signInSuccess, signFailure } from './actions';
+import {Alert} from 'react-native';
+import {all, call, put, takeLatest, select} from 'redux-saga/effects';
+import {Types, signInSuccess, signFailure} from './actions';
+import base64 from 'react-native-base64';
 import api from '~/services/api';
 
-export function* singIn({ payload }) {
+export function* singIn({payload}) {
   try {
-    const { password } = payload;
-    const { email } = yield select((state) => state.auth);
-    console.tron.log(email);
-    const auth = { username: 'romulorocha063@gmail.com', password: '***' };
-    const response = yield call(api.get, '/user', { auth });
-    // const { token, user } = response.data;
+    const {password} = payload;
+    const {email} = yield select(state => state.auth);
 
-    // if (user.provider) {
-    //   Alert.alert('Erro no login', 'Usuário nao pode ser prestador');
-    //   return;
-    // }
+    const BASE64ENCODED = base64.encode(`${email}:${password}`);
 
-    // api.defaults.headers.Authorization = `Bearer ${token}`;
+    const {data} = yield call(api.get, '/user', {
+      headers: {
+        Authorization: 'Basic ' + BASE64ENCODED,
+      },
+    });
+    console.log(JSON.stringify(data, null, 2));
 
-    yield put(signInSuccess(response));
+    yield put(signInSuccess(data));
   } catch (error) {
-    console.log(JSON.stringify(error));
-    Alert.alert('Falha na autenticação', 'Houve um erro, verifique seus dados');
+    Alert.alert(JSON.stringify(error));
+    console.log(JSON.stringify(error, null, 2));
+    console.tron.log(JSON.stringify(error));
+    // Alert.alert('Falha na autenticação', 'Houve um erro, verifique seus dados');
     yield put(signFailure(error));
   }
 }
