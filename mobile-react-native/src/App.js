@@ -6,7 +6,7 @@ import createRouter from './routes';
 // import { Container } from './styles';
 
 export default function App() {
-  const signed = false;
+  const signed = useSelector((state) => state.auth.signed);
 
   const Routes = createRouter(signed);
 

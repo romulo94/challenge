@@ -20,10 +20,10 @@ export function signInRequest(password) {
   };
 }
 
-export function signInSuccess(token, user) {
+export function signInSuccess(data) {
   return {
     type: Types.SIGN_IN_SUCCESS,
-    payload: { token, user },
+    payload: { data },
   };
 }
 

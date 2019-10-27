@@ -10,7 +10,7 @@ module.exports = {
     SharedArrayBuffer: 'readonly',
     __DEV__: true,
   },
-  parser: '@typescript-eslint/parser',
+
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -18,7 +18,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'jsx-a11y', 'prettier', 'react-hooks', 'import'],
+  plugins: ['react', 'jsx-a11y', 'prettier', 'react-hooks', 'import'],
   rules: {
     'react/jsx-filename-extension': ['error', {extensions: ['.js', '.jsx']}],
     'no-console': ['error', {allow: ['tron']}],

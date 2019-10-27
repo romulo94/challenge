@@ -3,10 +3,10 @@ import produce from 'immer';
 import { Types as TypesAuth } from './actions';
 
 const INITIAL_STATE = {
-  token: null,
   signed: false,
   loading: false,
   email: null,
+  user: null,
 };
 
 export default function auth(state = INITIAL_STATE, action) {
@@ -23,7 +23,7 @@ export default function auth(state = INITIAL_STATE, action) {
       }
 
       case TypesAuth.SIGN_IN_SUCCESS: {
-        draft.token = action.payload.token;
+        draft.user = action.payload.data.login;
         draft.signed = true;
         draft.loading = false;
         break;
@@ -35,7 +35,7 @@ export default function auth(state = INITIAL_STATE, action) {
       }
 
       case TypesAuth.SIGN_OUT: {
-        draft.token = null;
+        draft.user = null;
         draft.signed = false;
         break;
       }
