@@ -1,5 +1,15 @@
 <img src="https://www.creditas.com.br/static/images/logo-creditas-color-8367919c2a.svg" width="400">
 
+![DEMO](wiremock/demo.gif)
+
+# Solução
+
+- Para autenticação do usuário (no ANDROID) foi necessário o uso da lib `react-native-base64`.
+- A Navegação está divida em Switch Navigator seprando o usuário não autenticado/autenticado.
+- A screen do usuário autenticado está divida em Stack Navigator com o HEADER none.
+- Para estilização foi usado o `styled-components` e como fonte parcial a FIRA CODE.
+- OBS: A aplicação foi desenvolvida em plataforma ANDROID e não está testada na plataforma IOS.
+
 # Mobile React Native Challenge
 
 Este teste é apresentado aos candidatos as vagas de desenvolvedores mobile para avaliar os quesitos técnicos.
@@ -21,10 +31,10 @@ Para o desafio esperamos um aplicativo client do Github que contem as seguintes 
 ### Exemplo
 
 .
-  <img style="display: block; margin: 0;" src="./wiremock/login1.png" width="200">
-  <img style="display: block; margin: 0;" src="./wiremock/login2.png" width="200">
-  <img style="display: block; margin: 0;" src="./wiremock/repositories.png" width="200">
-  <img style="display: block; margin: 0;" src="./wiremock/commits.png" width="200">
+<img style="display: block; margin: 0;" src="./wiremock/login1.png" width="200">
+<img style="display: block; margin: 0;" src="./wiremock/login2.png" width="200">
+<img style="display: block; margin: 0;" src="./wiremock/repositories.png" width="200">
+<img style="display: block; margin: 0;" src="./wiremock/commits.png" width="200">
 
 ## Apresentação
 
