@@ -4,7 +4,6 @@ import Input from '~/components/InputDeafult';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
-  align-items: center;
 `;
 
 export const FormInput = styled(Input)`
@@ -13,10 +12,12 @@ export const FormInput = styled(Input)`
 
 export const ImageLogo = styled.Image`
   margin-top: 10px;
+  align-self: center;
 `;
 
 export const ContainerRepo = styled.TouchableOpacity`
   display: flex;
+
   height: 90px;
   margin-bottom: 20px;
 `;
@@ -27,6 +28,7 @@ export const NameRepo = styled(TextCustom)`
 
 export const ContainerDesciption = styled.View`
   display: flex;
+
   border: 1px solid #33333380;
   border-radius: 5px;
   height: 72px;

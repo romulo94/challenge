@@ -12,6 +12,7 @@ import { Container, ImageLogo, FormInput } from './styles';
 export default function Repos({ navigation }) {
   const [repoName, setRepoName] = useState('');
   const [repos, setRepos] = useState([]);
+  const [foundRepos, setFoundRepos] = useState([]);
   const [page, setPage] = useState(1);
 
   // quando todos os repositórios forem carregados o valor será TRUE
@@ -37,9 +38,24 @@ export default function Repos({ navigation }) {
     setRepos([...repos, ...data]);
   }, [page, repos]);
 
+  const searchRepo = useCallback(async () => {
+    const exp = new RegExp(repoName, 'gi');
+
+    // a função filtra por corresponcia do NAME do repo
+    // TO DO: carregar todos os REPOS e filtrar
+    const findByNameRepoRegex = (regex) => repos.filter((obj) => obj.name.match(regex));
+
+    setFoundRepos(findByNameRepoRegex(exp));
+  }, [repoName, repos]);
+
   useEffect(() => {
     loadRepos();
   }, []);
+
+  //
+  useEffect(() => {
+    searchRepo();
+  }, [repoName]);
 
   return (
     <Container>
@@ -53,15 +69,24 @@ export default function Repos({ navigation }) {
         onChangeText={setRepoName}
       />
 
-      <ListDefault
-        data={repos}
-        onEndReached={!full && loadRepos}
-        renderItem={({ item }) => (
-          <ContainerItem item={item} navigation={navigation} />
-        )}
-        ListFooterComponent={() => (full ? <></> : <ActivityIndicator size="small" color="black" />)
-        }
-      />
+      {!repoName.length ? (
+        <ListDefault
+          data={repos}
+          onEndReached={!full && loadRepos}
+          renderItem={({ item }) => (
+            <ContainerItem item={item} navigation={navigation} />
+          )}
+          ListFooterComponent={() => (full ? <></> : <ActivityIndicator size="small" color="black" />)
+          }
+        />
+      ) : (
+        <ListDefault
+          data={foundRepos}
+          renderItem={({ item }) => (
+            <ContainerItem item={item} navigation={navigation} />
+          )}
+        />
+      )}
     </Container>
   );
 }
