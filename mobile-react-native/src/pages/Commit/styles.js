@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { TextCustom } from '~/styles';
 
 export const Container = styled.SafeAreaView`
   flex: 1;
@@ -47,7 +48,7 @@ export const ContainerDesciption = styled.View`
   justify-content: center;
 `;
 
-export const DesciptionCommit = styled.Text.attrs({ numberOfLines: 2 })`
+export const DesciptionCommit = styled(TextCustom).attrs({ numberOfLines: 2 })`
   font-size: 14px;
   text-align: center;
 `;

@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { TextCustom } from '~/styles';
 import Input from '~/components/InputDeafult';
 
 export const Container = styled.SafeAreaView`
@@ -20,7 +21,7 @@ export const ContainerRepo = styled.TouchableOpacity`
   margin-bottom: 20px;
 `;
 
-export const NameRepo = styled.Text`
+export const NameRepo = styled(TextCustom)`
   font-size: 15px;
 `;
 

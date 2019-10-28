@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { ActivityIndicator, Image } from 'react-native';
+import { ActivityIndicator } from 'react-native';
 import ListDefault from '~/components/ListDefault';
 import ContainerItem from './ContainerItem';
 import logo from '~/assets/images/github-logo@64.png';
@@ -13,14 +13,18 @@ export default function Repos({ navigation }) {
   const [repoName, setRepoName] = useState('');
   const [repos, setRepos] = useState([]);
   const [page, setPage] = useState(1);
+
+  // quando todos os repositórios forem carregados o valor será TRUE
   const [full, setFull] = useState(false);
 
   // para evitar re-render não desestruturar!
   const user = useSelector((state) => state.auth.user);
 
+  // usando Callback para evitar recriação da função
   const loadRepos = useCallback(async () => {
     if (full) return;
 
+    // limite por 'página' fixo (10)
     const queryParams = `?page=${page}&per_page=10`;
 
     const { data } = await api.get(`users/${user}/repos${queryParams}`);
