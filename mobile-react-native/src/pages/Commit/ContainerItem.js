@@ -1,16 +1,14 @@
 import React from 'react';
 
 import {
-  ContainerCommit,
-  ContainerDesciption,
-  DesciptionCommit,
-  Image,
+  ContainerCommit, ContainerDesciption, DesciptionCommit, Image,
 } from './styles';
 
 export default function ContainerItem({ item }) {
+  console.log('item');
   return (
     <ContainerCommit key={String(item.sha)}>
-      <Image source={{ uri: item.author.avatar_url }} />
+      <Image source={{ uri: item.author && item.author.avatar_url }} />
 
       <ContainerDesciption>
         {item.commit.message ? (

@@ -6,9 +6,9 @@ import logo from '~/assets/images/github-logo@64.png';
 
 import api from '~/services/api';
 
-import { 
-Container, ImageLogo, Header, NameRepo
- } from './styles';
+import {
+  Container, ImageLogo, Header, NameRepo,
+} from './styles';
 
 export default function Commit({ navigation }) {
   const [commits, setCommits] = useState([]);
@@ -16,12 +16,12 @@ export default function Commit({ navigation }) {
 
   useEffect(() => {}, []);
   const loadCommits = useCallback(async () => {
-    const { data } = await api.get(
-      `repos/${repo.owner.login}/${repo.name}/commits`,
-    );
+    const { data } = await api.get(`repos/${repo.owner.login}/${repo.name}/commits`);
 
     setCommits(data);
   }, [commits]);
+
+  console.log('commits', JSON.stringify(commits, null, 2));
 
   useEffect(() => {
     loadCommits();
@@ -39,9 +39,7 @@ export default function Commit({ navigation }) {
       {/* Removido o onEndReached pois ja foi mostrado na outra Flatlist */}
       <ListDefault
         data={commits}
-        renderItem={({ item }) => (
-          <ContainerItem key={item.id} item={item} navigation={navigation} />
-        )}
+        renderItem={({ item }) => <ContainerItem key={item.id} item={item} navigation={navigation} />}
       />
     </Container>
   );
