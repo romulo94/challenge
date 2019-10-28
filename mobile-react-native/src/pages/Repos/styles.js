@@ -14,13 +14,6 @@ export const ImageLogo = styled.Image`
   margin-top: 10px;
 `;
 
-export const List = styled.FlatList.attrs({
-  showVerticalScrollIndicator: false,
-  contentContainerStyle: {
-    padding: 20,
-  },
-})``;
-
 export const ContainerRepo = styled.TouchableOpacity`
   display: flex;
   height: 90px;

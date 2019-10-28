@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { View, Text } from 'react-native';
+import ListDefault from '~/components/ListDefault';
+import ContainerItem from './ContainerItem';
+import logo from '~/assets/images/github-logo@64.png';
 
 import api from '~/services/api';
 
-// import { Container } from './styles';
+import { 
+Container, ImageLogo, Header, NameRepo
+ } from './styles';
 
 export default function Commit({ navigation }) {
   const [commits, setCommits] = useState([]);
@@ -23,8 +28,21 @@ export default function Commit({ navigation }) {
   }, []);
 
   return (
-    <View>
-      <Text>{JSON.stringify(commits, null, 2)}</Text>
-    </View>
+    <Container>
+      <Header>
+        <ImageLogo source={logo} />
+        <NameRepo>
+          <Text>{repo.name}</Text>
+        </NameRepo>
+      </Header>
+
+      {/* Removido o onEndReached pois ja foi mostrado na outra Flatlist */}
+      <ListDefault
+        data={commits}
+        renderItem={({ item }) => (
+          <ContainerItem key={item.id} item={item} navigation={navigation} />
+        )}
+      />
+    </Container>
   );
 }

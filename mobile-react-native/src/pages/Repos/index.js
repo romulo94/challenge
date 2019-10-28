@@ -1,20 +1,13 @@
 import React, { useEffect, useState, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { ActivityIndicator, Image } from 'react-native';
+import ListDefault from '~/components/ListDefault';
+import ContainerItem from './ContainerItem';
 import logo from '~/assets/images/github-logo@64.png';
 
 import api from '~/services/api';
 
-import {
-  Container,
-  List,
-  ContainerRepo,
-  NameRepo,
-  DesciptionRepo,
-  ContainerDesciption,
-  ImageLogo,
-  FormInput,
-} from './styles';
+import { Container, ImageLogo, FormInput } from './styles';
 
 export default function Repos({ navigation }) {
   const [repoName, setRepoName] = useState('');
@@ -22,7 +15,7 @@ export default function Repos({ navigation }) {
   const [page, setPage] = useState(1);
   const [full, setFull] = useState(false);
 
-  // para evitar re-render não desestruturo!
+  // para evitar re-render não desestruturar!
   const user = useSelector((state) => state.auth.user);
 
   const loadRepos = useCallback(async () => {
@@ -47,7 +40,6 @@ export default function Repos({ navigation }) {
   return (
     <Container>
       <ImageLogo source={logo} />
-
       <FormInput
         autoCorrect={false}
         autoCapitalize="none"
@@ -57,25 +49,11 @@ export default function Repos({ navigation }) {
         onChangeText={setRepoName}
       />
 
-      <List
-        onEndReached={!full && loadRepos}
-        onEndReachedThreshold={0.2}
-        keyExtractor={(item) => JSON.stringify(item.id)}
+      <ListDefault
         data={repos}
+        onEndReached={!full && loadRepos}
         renderItem={({ item }) => (
-          <ContainerRepo
-            key={item.id}
-            onPress={() => navigation.navigate('Commit', { item })}
-          >
-            <NameRepo>{item.name}</NameRepo>
-            <ContainerDesciption>
-              {item.description ? (
-                <DesciptionRepo>{item.description}</DesciptionRepo>
-              ) : (
-                <DesciptionRepo>no descrition</DesciptionRepo>
-              )}
-            </ContainerDesciption>
-          </ContainerRepo>
+          <ContainerItem item={item} navigation={navigation} />
         )}
         ListFooterComponent={() => (full ? <></> : <ActivityIndicator size="small" color="black" />)
         }
