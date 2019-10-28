@@ -1,3 +1,4 @@
+// Arquivo para configuração do ROOT IMPORT
 {
   "compilerOptions": {
     "baseUrl": "src",

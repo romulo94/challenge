@@ -10,6 +10,8 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { StatusBar } from 'react-native';
 
+// Seta a configuralçao do REACTOTRON
+// OBS: deve vir antes do STORE
 import './config/ReactotronConfig';
 
 import store from '~/store';
