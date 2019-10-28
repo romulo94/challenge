@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { Image } from 'react-native';
+import { Image, Alert } from 'react-native';
 
 import { setEmail as setEmailAction } from '~/store/modules/auth/actions';
 import {
@@ -21,7 +21,7 @@ export default function Email({ navigation }) {
 
   function next() {
     if (!email) {
-      alert('Wait! Where are your email?');
+      Alert.alert('Wait! Where are your email?');
     } else {
       dispatch(setEmailAction(email));
       navigation.navigate('Login2');

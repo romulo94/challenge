@@ -1,4 +1,4 @@
-import { Platform } from 'react-native';
+import {Platform} from 'react-native';
 
 import styled from 'styled-components/native';
 
@@ -6,6 +6,7 @@ import Input from '~/components/InputDeafult';
 import Button from '~/components/ButtonDefault';
 
 export const Container = styled.KeyboardAvoidingView.attrs({
+  // Por default o IOS nao tem o comportamento do teclado igual ao ANDROID
   enabled: Platform.OS === 'ios',
   behavior: 'padding',
 })`
@@ -39,7 +40,7 @@ export const ContainerImage = styled.View`
 export const ContainerAction = styled.View`
   height: 50%;
   width: 100%;
-  /* justify-content: center; */
+
   align-items: center;
   top: 25px;
 `;

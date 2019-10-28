@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { Text, Image } from 'react-native';
+import { Image } from 'react-native';
 import { signInRequest } from '~/store/modules/auth/actions';
-import Button from '~/components/ButtonDefault';
+
 import {
   Container,
   FormInput,
